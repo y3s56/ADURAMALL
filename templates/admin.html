@@ -1,0 +1,15 @@
+<h2>Admin Panel</h2>
+
+<form method="post" enctype="multipart/form-data">
+<input name="name" placeholder="Product name"><br>
+<input name="category" placeholder="Clothes / Pants / Footwear"><br>
+<input name="price" placeholder="Price"><br>
+<input name="promo" placeholder="Promo text"><br>
+<input type="file" name="image" required><br>
+<button>Add Product</button>
+</form>
+
+<hr>
+{% for p in products %}
+<p>{{p.name}} - {{p.category}} - £{{p.price}}</p>
+{% endfor %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Featured Items</h2>
+<div class="grid">
+{% for p in products %}
+<div class="card">
+<img src="{{ p.image }}">
+<h3>{{ p.name }}</h3>
+<p>{{ p.category }}</p>
+<p><b>$ {{ p.price }}</b></p>
+<div class="promo">{{ p.promo }}</div>
+<a href="{{ url_for('add_to_cart', pid=p.id) }}"><button>Add to Cart</button></a>
+</div>
+{% endfor %}
+</div>
+
+<h2>Virtual Try-On Studio</h2>
+<div>
+{% if avatar %}
+<img src="{{ avatar }}" width="260" style="border-radius:20px"><br>
+{% else %}
+<img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" width="260" style="border-radius:20px"><br>
+{% endif %}
+<form action="{{ url_for('upload_avatar') }}" method="post" enctype="multipart/form-data">
+<input type="file" name="avatar" accept="image/*" required>
+<button>Upload My Face</button>
+</form>
+</div>
+{% endblock %}

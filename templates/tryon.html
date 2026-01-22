@@ -1,0 +1,15 @@
+<h2>Virtual Try-On Studio</h2>
+
+{% if current_user.avatar %}
+<img src="/{{current_user.avatar}}" width="260"><br>
+{% endif %}
+
+<form action="/upload_avatar" method="post" enctype="multipart/form-data">
+<input type="file" name="avatar" required>
+<button>Upload Your Face</button>
+</form>
+
+<h3>Designer Collection</h3>
+{% for p in products %}
+<img src="/{{p.image}}" width="120">
+{% endfor %}
